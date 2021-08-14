@@ -9,7 +9,7 @@ class TickerTextController extends ChangeNotifier {
   /// Check if scrolling has started
   bool get started => _started;
 
-  TickerTextController({autoStart = false}) : _started = autoStart;
+  TickerTextController({bool autoStart = false}) : _started = autoStart;
 
   void startScroll() {
     _started = true;
@@ -26,14 +26,14 @@ class TickerText extends StatefulWidget {
   final Widget child;
   final Axis scrollDirection;
 
-  /// Speed at which the text scrolls in pixels per second.
+  /// Speed at which the widget scrolls in pixels per second.
   /// Has to be greater than zero.
   final int speed;
 
-  /// How long it takes for text to scroll back up from the end.
+  /// How long it takes for the widget to scroll back up from the end.
   final Duration returnDuration;
 
-  /// How long it takes for text to begin scrolling.
+  /// How long it takes for widget to begin scrolling.
   final Duration startPauseDuration;
 
   /// How long the scrolling pauses at the end before scrolling back up.
