@@ -21,8 +21,8 @@ TickerText(
 ```
 
 ## Previews
-<img src="./ticker_2.gif?raw=true">
-<img src="./ticker_1.gif?raw=true">
+<img src="https://raw.githubusercontent.com/arafatamim/ticker_text/main/ticker_2.gif?raw=true">
+<img src="https://raw.githubusercontent.com/arafatamim/ticker_text/main/ticker_1.gif?raw=true">
 
 ## License
 This project is MIT licensed.
