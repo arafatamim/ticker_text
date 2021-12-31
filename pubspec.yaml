@@ -1,6 +1,7 @@
 name: ticker_text
-description: Configurable marquee text scroller
+description: Configurable & straightforward text scroller with minimal dependencies.
 version: 1.0.0
+author: Tamim Arafat <tamim.arafat@gmail.com>
 homepage: https://github.com/arafatamim/ticker_text
 
 environment:
@@ -8,14 +9,14 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  fading_edge_scrollview: ^2.0.0
+  fading_edge_scrollview: ^2.0.1
   flutter:
     sdk: flutter
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^1.0.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
