@@ -1,7 +1,6 @@
 name: ticker_text
 description: Configurable & straightforward text scroller with minimal dependencies.
 version: 1.0.0
-author: Tamim Arafat <tamim.arafat@gmail.com>
 homepage: https://github.com/arafatamim/ticker_text
 
 environment:
