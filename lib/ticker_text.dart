@@ -77,7 +77,7 @@ class TickerText extends StatefulWidget {
         super(key: key);
 
   @override
-  _TickerTextState createState() => _TickerTextState();
+  State<TickerText> createState() => _TickerTextState();
 }
 
 class _TickerTextState extends State<TickerText> {
@@ -96,7 +96,7 @@ class _TickerTextState extends State<TickerText> {
         widget.controller ?? TickerTextController(autoStart: true);
 
     if (_autoScrollController.started) {
-      WidgetsBinding.instance?.addPostFrameCallback((_) => _scroll());
+      WidgetsBinding.instance.addPostFrameCallback((_) => _scroll());
     } else {
       _autoScrollController.addListener(_scroll);
     }
@@ -115,9 +115,9 @@ class _TickerTextState extends State<TickerText> {
     return FadingEdgeScrollView.fromSingleChildScrollView(
       child: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
-        child: widget.child,
         scrollDirection: widget.scrollDirection,
         controller: _scrollController,
+        child: widget.child,
       ),
     );
   }
