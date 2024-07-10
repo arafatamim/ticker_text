@@ -107,6 +107,7 @@ class _TickerTextState extends State<TickerText> {
   @override
   void dispose() {
     _scrollController.dispose();
+    _autoScrollController.dispose();
     super.dispose();
   }
 

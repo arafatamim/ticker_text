@@ -38,8 +38,10 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: SizedBox(
             height: 50,
+            width: 100,
             child: TickerText(
               controller: _tickerTextController,
+              scrollDirection: Axis.vertical,
               child: const Text(text),
             ),
           ),
@@ -50,7 +52,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    _tickerTextController = TickerTextController();
+    _tickerTextController = TickerTextController(autoStart: false);
 
     // start scrolling after 10 seconds
     Timer(
