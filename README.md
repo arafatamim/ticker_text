@@ -4,8 +4,9 @@
 
 Straightforward widget scroller with minimal dependencies.
 
-<img src="https://raw.githubusercontent.com/arafatamim/ticker_text/main/ticker_2.gif?raw=true">
-<img src="https://raw.githubusercontent.com/arafatamim/ticker_text/main/ticker_1.gif?raw=true">
+![ticker_anim_1](https://github.com/user-attachments/assets/c81e2728-53eb-4c77-8595-89091819b7cf)
+
+![ticker_anim_2](https://github.com/user-attachments/assets/bc10acf8-f3fd-498c-a221-ac39012ca7fe)
 
 ## Features
 
