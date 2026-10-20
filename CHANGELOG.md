@@ -1,7 +1,8 @@
 ## 2.2.0
 
-* Update minimum SDK to Dart 3.8 / Flutter 3.32.
-* Update `flutter_lints` to 6.0.0 and fix lint issues.
+* Update minimum SDK to Dart 3.0 / Flutter 3.10, as required by
+  `fading_edge_scrollview`.
+* Allow `flutter_lints` 3 through 6 so newer SDKs use current lint rules.
 * Add repository, issue tracker, and topics metadata.
 * Add a runnable example app with its own `pubspec.yaml`.
 * Add a smoke test that renders the example and exercises start/stop.

@@ -35,9 +35,8 @@ void main() {
       ),
     );
 
-    final position = tester
-        .state<ScrollableState>(find.byType(Scrollable))
-        .position;
+    final position =
+        tester.state<ScrollableState>(find.byType(Scrollable)).position;
 
     // In portrait the 700px child does not fit in the 400px viewport.
     expect(position.maxScrollExtent, greaterThan(0));
@@ -74,7 +73,8 @@ void main() {
 
     // The child is centered at x = 50..750. The end fade would cover its last
     // few pixels (x >= 715) if the fading edge was not recalculated.
-    expect(colorAt(745, 200), Colors.red.toARGB32());
+    const red = 0xFFF44336; // Colors.red
+    expect(colorAt(745, 200), red);
 
     image!.dispose();
 
