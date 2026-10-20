@@ -1,7 +1,5 @@
-import 'dart:async';
-
+import 'package:flutter/material.dart';
 import 'package:ticker_text/ticker_text.dart';
-import "package:flutter/material.dart";
 
 const text = """Bavarian bergkase cheddar cheese triangles.
 Fromage frais bocconcini pecorino caerphilly chalk and cheese
@@ -19,50 +17,76 @@ normandie airedale stinking bishop cheddar hard cheese
 squirty cheese. Red leicester squirty cheese cream cheese.
 """;
 
-void main() => runApp(const MyApp());
+void main() => runApp(const TickerTextExampleApp());
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  late final TickerTextController _tickerTextController;
+class TickerTextExampleApp extends StatelessWidget {
+  const TickerTextExampleApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: SizedBox(
-            height: 50,
-            width: 100,
-            child: TickerText(
-              controller: _tickerTextController,
-              scrollDirection: Axis.vertical,
-              child: const Text(text),
-            ),
-          ),
-        ),
-      ),
+      title: 'TickerText example',
+      home: const TickerTextExample(),
     );
   }
+}
+
+class TickerTextExample extends StatefulWidget {
+  const TickerTextExample({super.key});
+
+  @override
+  State<TickerTextExample> createState() => _TickerTextExampleState();
+}
+
+class _TickerTextExampleState extends State<TickerTextExample> {
+  late final TickerTextController _tickerTextController;
 
   @override
   void initState() {
-    _tickerTextController = TickerTextController(autoStart: false);
-
-    // start scrolling after 10 seconds
-    Timer(
-      const Duration(seconds: 10),
-      () {
-        _tickerTextController.startScroll();
-        // print(_tickerTextController.started);
-      },
-    );
-
     super.initState();
+    _tickerTextController = TickerTextController(autoStart: true);
+  }
+
+  @override
+  void dispose() {
+    _tickerTextController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('TickerText')),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              width: 200,
+              height: 50,
+              child: TickerText(
+                controller: _tickerTextController,
+                child: const Text(text),
+              ),
+            ),
+            const SizedBox(height: 24),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                FilledButton(
+                  onPressed: _tickerTextController.startScroll,
+                  child: const Text('Start'),
+                ),
+                const SizedBox(width: 12),
+                OutlinedButton(
+                  onPressed: _tickerTextController.stopScroll,
+                  child: const Text('Stop'),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
