@@ -4,6 +4,7 @@
 * Update `flutter_lints` to 6.0.0 and fix lint issues.
 * Add repository, issue tracker, and topics metadata.
 * Add a runnable example app with its own `pubspec.yaml`.
+* Add a smoke test that renders the example and exercises start/stop.
 * Fix `stopScroll()` not being observed by the internal auto-start controller.
 * Fix a caller-provided `TickerTextController` being disposed with the widget.
 * Handle controller replacement through `didUpdateWidget`.
