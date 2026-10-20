@@ -135,8 +135,8 @@ class TickerText extends StatefulWidget {
   State<TickerText> createState() => _TickerTextState();
 }
 
-class _TickerTextState extends State<TickerText> {
-  late final ScrollController _scrollController;
+class _TickerTextState extends State<TickerText> with WidgetsBindingObserver {
+  late final _TickerScrollController _scrollController;
   late TickerTextController _tickerController;
   bool _ownsController = false;
 
@@ -151,7 +151,8 @@ class _TickerTextState extends State<TickerText> {
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
+    WidgetsBinding.instance.addObserver(this);
+    _scrollController = _TickerScrollController();
     _attachController(
       widget.controller ?? TickerTextController(autoStart: true),
       ownsController: widget.controller == null,
@@ -174,11 +175,25 @@ class _TickerTextState extends State<TickerText> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _runId++;
     _cancelDelay();
     _detachController();
     _scrollController.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeMetrics() {
+    super.didChangeMetrics();
+    // The fading edges are driven by the scroll controller. Re-notify its
+    // listeners after the new layout so the fade is recalculated with the new
+    // viewport and content dimensions (for example after an orientation
+    // change). See https://github.com/arafatamim/ticker_text/issues/4
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_scrollController.hasClients) return;
+      _scrollController.refreshFade();
+    });
   }
 
   void _attachController(
@@ -298,4 +313,14 @@ class _TickerTextState extends State<TickerText> {
       ),
     );
   }
+}
+
+/// A [ScrollController] that can re-run its listeners after a layout change.
+///
+/// [FadingEdgeScrollView] listens to the scroll controller to decide which
+/// fading edges to show. It does not recompute that state when the viewport
+/// changes, so we re-notify the listeners after a metrics change to make it
+/// read the new dimensions.
+class _TickerScrollController extends ScrollController {
+  void refreshFade() => notifyListeners();
 }

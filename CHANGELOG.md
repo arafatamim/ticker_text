@@ -6,6 +6,7 @@
 * Add a runnable example app with its own `pubspec.yaml`.
 * Add a smoke test that renders the example and exercises start/stop.
 * Fix `stopScroll()` not being observed by the internal auto-start controller.
+* Recalculate fading edges after an orientation or window-size change (#4).
 * Fix a caller-provided `TickerTextController` being disposed with the widget.
 * Handle controller replacement through `didUpdateWidget`.
 * Cancel pending delays when scrolling is stopped or the widget is disposed.
